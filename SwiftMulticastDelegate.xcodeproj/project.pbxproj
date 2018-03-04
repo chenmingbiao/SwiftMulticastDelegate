@@ -13,6 +13,7 @@
 		EF5078AF204C56250056074A /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = EF5078AE204C56250056074A /* Assets.xcassets */; };
 		EF5078B2204C56250056074A /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = EF5078B0204C56250056074A /* LaunchScreen.storyboard */; };
 		EF5078BD204C56250056074A /* SwiftMulticastDelegateTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF5078BC204C56250056074A /* SwiftMulticastDelegateTests.swift */; };
+		EF5078C9204C564B0056074A /* SwiftMulticastDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF5078C8204C564B0056074A /* SwiftMulticastDelegate.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -36,6 +37,7 @@
 		EF5078B8204C56250056074A /* SwiftMulticastDelegateTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = SwiftMulticastDelegateTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		EF5078BC204C56250056074A /* SwiftMulticastDelegateTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwiftMulticastDelegateTests.swift; sourceTree = "<group>"; };
 		EF5078BE204C56250056074A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		EF5078C8204C564B0056074A /* SwiftMulticastDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwiftMulticastDelegate.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -59,6 +61,7 @@
 		EF50789B204C56250056074A = {
 			isa = PBXGroup;
 			children = (
+				EF5078C7204C56410056074A /* Source */,
 				EF5078A6204C56250056074A /* SwiftMulticastDelegate */,
 				EF5078BB204C56250056074A /* SwiftMulticastDelegateTests */,
 				EF5078A5204C56250056074A /* Products */,
@@ -94,6 +97,14 @@
 				EF5078BE204C56250056074A /* Info.plist */,
 			);
 			path = SwiftMulticastDelegateTests;
+			sourceTree = "<group>";
+		};
+		EF5078C7204C56410056074A /* Source */ = {
+			isa = PBXGroup;
+			children = (
+				EF5078C8204C564B0056074A /* SwiftMulticastDelegate.swift */,
+			);
+			path = Source;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -201,6 +212,7 @@
 			files = (
 				EF5078AA204C56250056074A /* ViewController.swift in Sources */,
 				EF5078A8204C56250056074A /* AppDelegate.swift in Sources */,
+				EF5078C9204C564B0056074A /* SwiftMulticastDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
