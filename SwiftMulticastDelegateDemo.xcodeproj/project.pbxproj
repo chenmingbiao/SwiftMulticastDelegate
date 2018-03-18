@@ -7,13 +7,12 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		EF5078A8204C56250056074A /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF5078A7204C56250056074A /* AppDelegate.swift */; };
-		EF5078AA204C56250056074A /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF5078A9204C56250056074A /* ViewController.swift */; };
-		EF5078AD204C56250056074A /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = EF5078AB204C56250056074A /* Main.storyboard */; };
-		EF5078AF204C56250056074A /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = EF5078AE204C56250056074A /* Assets.xcassets */; };
-		EF5078B2204C56250056074A /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = EF5078B0204C56250056074A /* LaunchScreen.storyboard */; };
-		EF5078BD204C56250056074A /* SwiftMulticastDelegateTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF5078BC204C56250056074A /* SwiftMulticastDelegateTests.swift */; };
 		EF5078C9204C564B0056074A /* SwiftMulticastDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF5078C8204C564B0056074A /* SwiftMulticastDelegate.swift */; };
+		EF5BB548205EBB3500454714 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF5BB542205EBB3500454714 /* ViewController.swift */; };
+		EF5BB549205EBB3500454714 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = EF5BB543205EBB3500454714 /* Assets.xcassets */; };
+		EF5BB54A205EBB3500454714 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = EF5BB544205EBB3500454714 /* LaunchScreen.storyboard */; };
+		EF5BB54B205EBB3500454714 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF5BB546205EBB3500454714 /* AppDelegate.swift */; };
+		EF5BB54C205EBB3500454714 /* Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = EF5BB547205EBB3500454714 /* Info.plist */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -28,16 +27,13 @@
 
 /* Begin PBXFileReference section */
 		EF5078A4204C56250056074A /* SwiftMulticastDelegate.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SwiftMulticastDelegate.app; sourceTree = BUILT_PRODUCTS_DIR; };
-		EF5078A7204C56250056074A /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		EF5078A9204C56250056074A /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
-		EF5078AC204C56250056074A /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
-		EF5078AE204C56250056074A /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
-		EF5078B1204C56250056074A /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
-		EF5078B3204C56250056074A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		EF5078B8204C56250056074A /* SwiftMulticastDelegateTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = SwiftMulticastDelegateTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		EF5078BC204C56250056074A /* SwiftMulticastDelegateTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwiftMulticastDelegateTests.swift; sourceTree = "<group>"; };
-		EF5078BE204C56250056074A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		EF5078C8204C564B0056074A /* SwiftMulticastDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwiftMulticastDelegate.swift; sourceTree = "<group>"; };
+		EF5BB542205EBB3500454714 /* ViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		EF5BB543205EBB3500454714 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		EF5BB545205EBB3500454714 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		EF5BB546205EBB3500454714 /* AppDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		EF5BB547205EBB3500454714 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -62,8 +58,7 @@
 			isa = PBXGroup;
 			children = (
 				EF5078C7204C56410056074A /* Source */,
-				EF5078A6204C56250056074A /* SwiftMulticastDelegate */,
-				EF5078BB204C56250056074A /* SwiftMulticastDelegateTests */,
+				EF5BB541205EBB3500454714 /* SwiftMulticastDelegateDemo */,
 				EF5078A5204C56250056074A /* Products */,
 			);
 			sourceTree = "<group>";
@@ -77,34 +72,24 @@
 			name = Products;
 			sourceTree = "<group>";
 		};
-		EF5078A6204C56250056074A /* SwiftMulticastDelegate */ = {
-			isa = PBXGroup;
-			children = (
-				EF5078A7204C56250056074A /* AppDelegate.swift */,
-				EF5078A9204C56250056074A /* ViewController.swift */,
-				EF5078AB204C56250056074A /* Main.storyboard */,
-				EF5078AE204C56250056074A /* Assets.xcassets */,
-				EF5078B0204C56250056074A /* LaunchScreen.storyboard */,
-				EF5078B3204C56250056074A /* Info.plist */,
-			);
-			path = SwiftMulticastDelegate;
-			sourceTree = "<group>";
-		};
-		EF5078BB204C56250056074A /* SwiftMulticastDelegateTests */ = {
-			isa = PBXGroup;
-			children = (
-				EF5078BC204C56250056074A /* SwiftMulticastDelegateTests.swift */,
-				EF5078BE204C56250056074A /* Info.plist */,
-			);
-			path = SwiftMulticastDelegateTests;
-			sourceTree = "<group>";
-		};
 		EF5078C7204C56410056074A /* Source */ = {
 			isa = PBXGroup;
 			children = (
 				EF5078C8204C564B0056074A /* SwiftMulticastDelegate.swift */,
 			);
 			path = Source;
+			sourceTree = "<group>";
+		};
+		EF5BB541205EBB3500454714 /* SwiftMulticastDelegateDemo */ = {
+			isa = PBXGroup;
+			children = (
+				EF5BB546205EBB3500454714 /* AppDelegate.swift */,
+				EF5BB542205EBB3500454714 /* ViewController.swift */,
+				EF5BB544205EBB3500454714 /* LaunchScreen.storyboard */,
+				EF5BB547205EBB3500454714 /* Info.plist */,
+				EF5BB543205EBB3500454714 /* Assets.xcassets */,
+			);
+			path = SwiftMulticastDelegateDemo;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -166,7 +151,7 @@
 					};
 				};
 			};
-			buildConfigurationList = EF50789F204C56250056074A /* Build configuration list for PBXProject "SwiftMulticastDelegate" */;
+			buildConfigurationList = EF50789F204C56250056074A /* Build configuration list for PBXProject "SwiftMulticastDelegateDemo" */;
 			compatibilityVersion = "Xcode 8.0";
 			developmentRegion = en;
 			hasScannedForEncodings = 0;
@@ -190,9 +175,9 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				EF5078B2204C56250056074A /* LaunchScreen.storyboard in Resources */,
-				EF5078AF204C56250056074A /* Assets.xcassets in Resources */,
-				EF5078AD204C56250056074A /* Main.storyboard in Resources */,
+				EF5BB549205EBB3500454714 /* Assets.xcassets in Resources */,
+				EF5BB54A205EBB3500454714 /* LaunchScreen.storyboard in Resources */,
+				EF5BB54C205EBB3500454714 /* Info.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -210,8 +195,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				EF5078AA204C56250056074A /* ViewController.swift in Sources */,
-				EF5078A8204C56250056074A /* AppDelegate.swift in Sources */,
+				EF5BB54B205EBB3500454714 /* AppDelegate.swift in Sources */,
+				EF5BB548205EBB3500454714 /* ViewController.swift in Sources */,
 				EF5078C9204C564B0056074A /* SwiftMulticastDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -220,7 +205,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				EF5078BD204C56250056074A /* SwiftMulticastDelegateTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -235,18 +219,10 @@
 /* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
-		EF5078AB204C56250056074A /* Main.storyboard */ = {
+		EF5BB544205EBB3500454714 /* LaunchScreen.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
-				EF5078AC204C56250056074A /* Base */,
-			);
-			name = Main.storyboard;
-			sourceTree = "<group>";
-		};
-		EF5078B0204C56250056074A /* LaunchScreen.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				EF5078B1204C56250056074A /* Base */,
+				EF5BB545205EBB3500454714 /* Base */,
 			);
 			name = LaunchScreen.storyboard;
 			sourceTree = "<group>";
@@ -366,9 +342,10 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
-				INFOPLIST_FILE = SwiftMulticastDelegate/Info.plist;
+				INFOPLIST_FILE = "$(SRCROOT)/SwiftMulticastDelegateDemo/Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.billchan.SwiftMulticastDelegate.SwiftMulticastDelegate;
+				PRODUCT_BUNDLE_IDENTIFIER = com.billchan.SwiftMulticastDelegateDemo;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -380,9 +357,10 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
-				INFOPLIST_FILE = SwiftMulticastDelegate/Info.plist;
+				INFOPLIST_FILE = "$(SRCROOT)/SwiftMulticastDelegateDemo/Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.billchan.SwiftMulticastDelegate.SwiftMulticastDelegate;
+				PRODUCT_BUNDLE_IDENTIFIER = com.billchan.SwiftMulticastDelegateDemo;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -424,7 +402,7 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		EF50789F204C56250056074A /* Build configuration list for PBXProject "SwiftMulticastDelegate" */ = {
+		EF50789F204C56250056074A /* Build configuration list for PBXProject "SwiftMulticastDelegateDemo" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				EF5078BF204C56250056074A /* Debug */,
