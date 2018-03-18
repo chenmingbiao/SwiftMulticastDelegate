@@ -13,7 +13,7 @@ Copy `SwiftMulticastDelegate.swift` to your project
 #### CocoaPods
 
 ```ruby
-	pod 'SwiftMulticastDelegate'
+pod 'SwiftMulticastDelegate'
 ```
 
 #### Swift Package Manager
@@ -27,7 +27,7 @@ You can use [Swift Package Manager](https://swift.org/package-manager/) and spec
 
 Import the module
 ```swift
-	import SwiftMulticastDelegate
+import SwiftMulticastDelegate
 ```
 
 1. Add to your class: `let multicastDelegate = SwiftMulticastDelegate<MyProtocol>()`

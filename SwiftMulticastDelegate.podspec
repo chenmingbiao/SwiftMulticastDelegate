@@ -1,6 +1,6 @@
 Pod::Spec.new do |s|
   s.name     = 'SwiftMulticastDelegate'
-  s.version  = '2.1.1'
+  s.version  = '1.0.0'
   s.ios.deployment_target = '8.0'
   s.osx.deployment_target = '10.10'
   s.watchos.deployment_target = '2.0'
