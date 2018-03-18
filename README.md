@@ -12,7 +12,7 @@ Copy `SwiftMulticastDelegate.swift` to your project
 
 #### CocoaPods
 
-```swift
+```ruby
 pod 'SwiftMulticastDelegate'
 ```
 
