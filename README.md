@@ -1,5 +1,6 @@
 [![Build Status](https://travis-ci.org/chenmingbiao/SwiftMulticastDelegate.svg?branch=master)](https://travis-ci.org/chenmingbiao/SwiftMulticastDelegate)
 ![Swift 4.0.x](https://img.shields.io/badge/Swift-4.0.x-orange.svg) 
+![iOS 8+](http://img.shields.io/badge/iOS-8.0%2B-blue.svg)
 ![platforms](https://img.shields.io/badge/platforms-iOS%20%7C%20OS%20X%20%7C%20watchOS%20%7C%20tvOS%20-lightgrey.svg)
 
 # SwiftMulticastDelegate
