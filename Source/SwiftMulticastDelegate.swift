@@ -20,7 +20,7 @@ import Foundation
 ///   - left: The multicast delegate
 ///   - right: The delegate to be added
 public func +=<T>(left: SwiftMulticastDelegate<T>, right: T) {
-    left.add(right as AnyObject)
+    left.add(right)
 }
 
 /// Use this operator to remove a delegate.
@@ -31,7 +31,7 @@ public func +=<T>(left: SwiftMulticastDelegate<T>, right: T) {
 ///   - left: The multicast delegate
 ///   - right: The delegate to be removed
 public func -=<T>(left: SwiftMulticastDelegate<T>, right: T) {
-    left.remove(right as AnyObject)
+    left.remove(right)
 }
 
 /// Use this operator invoke a closure on each delegate.
@@ -57,17 +57,17 @@ public func =><T>(left: SwiftMulticastDelegate<T>, right: @escaping (T) -> ()) {
 private class SwiftMulticastDelegateNode {
     
     /// The Object of Delegate
-    weak var delegate: AnyObject!
+    weak var delegate: AnyObject?
     
     /// The Queue of Delegate
-    private(set) var delegateQueue: DispatchQueue!
+    private(set) var delegateQueue: DispatchQueue
     
     /// Init
     ///
     /// - Parameters:
     ///   - delegate: The Object of Delegate
     ///   - delegateQueue: The Queue of Delegate
-    init(delegate: AnyObject!, delegateQueue: DispatchQueue!) {
+    init(delegate: AnyObject, delegateQueue: DispatchQueue) {
         self.delegate = delegate
         self.delegateQueue = delegateQueue
     }
@@ -87,13 +87,9 @@ public class SwiftMulticastDelegate<T> {
     /// - Parameters:
     ///   - delegate: The Callback Object
     ///   - delegateQueue: The Callback Queue
-    public func add(_ delegate: AnyObject!, queue delegateQueue: DispatchQueue = DispatchQueue.main) {
+    public func add(_ delegate: T, queue delegateQueue: DispatchQueue = DispatchQueue.main) {
         
-        guard let delegate = delegate else {
-            return
-        }
-        
-        let node = SwiftMulticastDelegateNode(delegate: delegate, delegateQueue: delegateQueue)
+        let node = SwiftMulticastDelegateNode(delegate: delegate as AnyObject, delegateQueue: delegateQueue)
         
         synchronized(lock: delegateNodes as AnyObject!) {
             delegateNodes.append(node)
@@ -106,11 +102,7 @@ public class SwiftMulticastDelegate<T> {
     /// - Parameters:
     ///   - delegate: The Callback Object
     ///   - delegateQueue: The Callback Queue
-    public func remove(_ delegate: AnyObject!, queue delegateQueue: DispatchQueue = DispatchQueue.main) {
-        
-        guard let delegate = delegate else {
-            return
-        }
+    public func remove(_ delegate: T, queue delegateQueue: DispatchQueue = DispatchQueue.main) {
         
         synchronized(lock: delegateNodes as AnyObject!) {
             
@@ -118,10 +110,12 @@ public class SwiftMulticastDelegate<T> {
                 
                 let delegateNode: SwiftMulticastDelegateNode = delegateNodes[i]
                 
-                if delegateNode.delegate.isEqual(delegate) {
-                    if delegateQueue.isEqual(delegateNode.delegateQueue) {
-                        delegateNodes.remove(at: i)
-                    }
+                guard let nodeDelegate = delegateNode.delegate else {
+                    continue
+                }
+                
+                if nodeDelegate.isEqual(delegate), delegateQueue.isEqual(delegateNode.delegateQueue) {
+                    delegateNodes.remove(at: i)
                 }
                 
             }
@@ -130,13 +124,33 @@ public class SwiftMulticastDelegate<T> {
         
     }
     
+    /// Use this method to determine if the multicast delegate contains a given delegate.
+    ///
+    /// - Parameter delegate: The given delegate to check if it's contained
+    /// - Returns: `true` if the delegate is found or `false` otherwise
+    public func contain(_ delegate: T) -> Bool {
+        
+        for i in (0..<delegateNodes.count).reversed() {
+            
+            let delegateNode: SwiftMulticastDelegateNode = delegateNodes[i]
+            
+            guard let nodeDelegate = delegateNode.delegate else {
+                continue
+            }
+            
+            if nodeDelegate.isEqual(delegate) {
+                return true
+            }
+        }
+        
+        return false
+    }
+    
     /// Remove All The Delegates
     public func removeAll() {
-        
         synchronized(lock: delegateNodes as AnyObject!) {
             delegateNodes.removeAll()
         }
-        
     }
     
     /// Invoke Callback
@@ -188,9 +202,15 @@ extension SwiftMulticastDelegate {
         var count: Int = 0
         
         for delegateNode in delegateNodes {
-            if delegateNode.delegate.isKind(of: cl) {
+            
+            guard let nodeDelegate = delegateNode.delegate else {
+                continue
+            }
+            
+            if nodeDelegate.isKind(of: cl) {
                 count += 1
             }
+            
         }
         
         return count
@@ -206,7 +226,12 @@ extension SwiftMulticastDelegate {
         var count: Int = 0
         
         for delegateNode in delegateNodes {
-            if delegateNode.delegate.responds(to: sel) {
+            
+            guard let nodeDelegate = delegateNode.delegate else {
+                continue
+            }
+            
+            if nodeDelegate.responds(to: sel) {
                 count += 1
             }
         }

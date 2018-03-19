@@ -67,6 +67,7 @@ class ViewController: UIViewController {
         subview2.name = "subview@2"
         button.delegates += subview2
         self.view.addSubview(subview2)
+
     }
 
 }
