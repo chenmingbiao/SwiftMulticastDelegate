@@ -1,5 +1,6 @@
 [![Build Status](https://travis-ci.org/chenmingbiao/SwiftMulticastDelegate.svg?branch=master)](https://travis-ci.org/chenmingbiao/SwiftMulticastDelegate)
-![Swift 4.0.x](https://img.shields.io/badge/Swift-4.0.x-orange.svg) ![platforms](https://img.shields.io/badge/platforms-iOS%20%7C%20OS%20X%20%7C%20watchOS%20%7C%20tvOS%20-lightgrey.svg)
+![Swift 4.0.x](https://img.shields.io/badge/Swift-4.0.x-orange.svg) 
+![platforms](https://img.shields.io/badge/platforms-iOS%20%7C%20OS%20X%20%7C%20watchOS%20%7C%20tvOS%20-lightgrey.svg)
 
 # SwiftMulticastDelegate
 
@@ -53,7 +54,7 @@ protocol MyButtonDelegate: class {
 // MARK: - MyButton
 class MyButton: UIButton {
 
-    var delegates = SwiftMulticastDelegate<MyButtonDelegate>()
+    var delegate = SwiftMulticastDelegate<MyButtonDelegate>()
 
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -101,12 +102,12 @@ class ViewController: UIViewController {
 
         let subview1 = SubView()
         subview1.name = "subview@1"
-        button.delegates += subview1
+        button.delegate += subview1
         self.view.addSubview(subview1)
 
         let subview2 = SubView()
         subview2.name = "subview@2"
-        button.delegates += subview2
+        button.delegate += subview2
         self.view.addSubview(subview2)
     }
 
@@ -117,8 +118,8 @@ class ViewController: UIViewController {
 
 Simplify multicast usage
 
-`+=` calls add(_ delegate: AnyObject!)
+`+=` calls `add(_ delegate: AnyObject!)`
 
-`-=` calls remove(_ delegate: AnyObject!)
+`-=` calls `remove(_ delegate: AnyObject!)`
 
-`=>` calls invoke(_ invocation: (T) -> ())
+`=>` calls `invoke(_ invocation: (T) -> ())`
