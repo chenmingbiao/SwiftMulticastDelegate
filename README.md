@@ -1,10 +1,10 @@
+# SwiftMulticastDelegate
+
 [![Build Status](https://travis-ci.org/chenmingbiao/SwiftMulticastDelegate.svg?branch=master)](https://travis-ci.org/chenmingbiao/SwiftMulticastDelegate)
 ![Swift 4.0.x](https://img.shields.io/badge/Swift-4.0.x-orange.svg) 
 ![iOS 8+](http://img.shields.io/badge/iOS-8.0%2B-blue.svg)
-[![License](https://img.shields.io/cocoapods/l/SwiftKVO.svg?style=flat)](http://cocoapods.org/pods/SwiftKVO)
+![License](https://img.shields.io/cocoapods/l/SwiftKVO.svg?style=flat)
 ![platforms](https://img.shields.io/badge/platforms-iOS%20%7C%20OS%20X%20%7C%20watchOS%20%7C%20tvOS%20-lightgrey.svg)
-
-# SwiftMulticastDelegate
 
 Implementing multi cast of delegate in Swift.
 
@@ -131,3 +131,7 @@ Simplify multicast usage
 `-=` calls `remove(_ delegate: T)` or `remove(_ delegate: [T])`
 
 `=>` calls `invoke(_ invocation: (T) -> ())`
+
+### License
+
+SwiftMulticastDelegate is available under the MIT license. See the LICENSE file for more info
