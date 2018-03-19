@@ -14,7 +14,7 @@ Copy `SwiftMulticastDelegate.swift` to your project
 #### CocoaPods
 
 ```ruby
-pod 'SwiftMulticastDelegate'
+pod 'SwiftMulticastDelegate', :git => 'https://github.com/chenmingbiao/SwiftMulticastDelegate.git'
 ```
 
 #### Swift Package Manager
@@ -31,14 +31,14 @@ Import the module
 import SwiftMulticastDelegate
 ```
 
-1. Add to your class: `let multicastDelegate = SwiftMulticastDelegate<MyProtocol>()`
-2. Other classes must add as a delegate: `service.delegate.add(self)`
-3. When you need to notify your delegates: `multicastDelegate.invoke { delegate in delegate.done() }`
+1. Add to your class: `let delegate = SwiftMulticastDelegate<MyProtocol>()`
+2. Other classes must add as a delegate: `obj.delegate.add(self)`
+3. When you need to notify your delegates: `multicastDelegate.invoke { delegate in delegate.func() }`
 
 Alternative version:
 
-1. Add to your class: `let multicastDelegate = SwiftMulticastDelegate<MyProtocol>()`
-2. Other classes must add as a delegate: `service.delegate += self`
+1. Add to your class: `let delegate = SwiftMulticastDelegate<MyProtocol>()`
+2. Other classes must add as a delegate: `obj.delegate += self`
 3. When you need to notify your delegates: `multicastDelegate => { $0.func() }`
 
 
@@ -115,7 +115,7 @@ class ViewController: UIViewController {
 
 ### Operators
 
-There are 3 operators to simplify the multicast usage
+Simplify multicast usage
 
 `+=` calls add(_ delegate: AnyObject!)
 
