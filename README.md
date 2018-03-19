@@ -69,7 +69,7 @@ class MyButton: UIButton {
     }
 
     @objc func didTap() {
-        delegates => {
+        delegate => {
             $0.didTap()
         }
     }
@@ -110,6 +110,12 @@ class ViewController: UIViewController {
         subview2.name = "subview@2"
         button.delegate += subview2
         self.view.addSubview(subview2)
+
+        /* Add Array */
+        // button.delegate += [subview1, subview2]
+
+        /* Rmove Array */
+        // button.delegate -= [subview1, subview2]
     }
 
 }
@@ -119,8 +125,8 @@ class ViewController: UIViewController {
 
 Simplify multicast usage
 
-`+=` calls `add(_ delegate: AnyObject!)`
+`+=` calls `add(_ delegate: T)` or `add(_ delegate: [T])`
 
-`-=` calls `remove(_ delegate: AnyObject!)`
+`-=` calls `remove(_ delegate: T)` or `remove(_ delegate: [T])`
 
 `=>` calls `invoke(_ invocation: (T) -> ())`

@@ -23,6 +23,15 @@ public func +=<T>(left: SwiftMulticastDelegate<T>, right: T) {
     left.add(right)
 }
 
+/// Use this operator to add delegates.
+///
+/// - Parameters:
+///   - left: The multicast delegate
+///   - rights: The delegate Array to be added
+public func +=<T>(left: SwiftMulticastDelegate<T>, rights: [T]) {
+    left.add(rights)
+}
+
 /// Use this operator to remove a delegate.
 ///
 /// This is a convenience operator for calling `remove(delegate: AnyObject!)`.
@@ -32,6 +41,15 @@ public func +=<T>(left: SwiftMulticastDelegate<T>, right: T) {
 ///   - right: The delegate to be removed
 public func -=<T>(left: SwiftMulticastDelegate<T>, right: T) {
     left.remove(right)
+}
+
+/// Use this operator to remove delegates.
+///
+/// - Parameters:
+///   - left: The multicast delegate
+///   - rights: The delegate Array to be removed
+public func -=<T>(left: SwiftMulticastDelegate<T>, rights: [T]) {
+    left.remove(rights)
 }
 
 /// Use this operator invoke a closure on each delegate.
@@ -97,10 +115,23 @@ public class SwiftMulticastDelegate<T> {
         
     }
     
-    /// Remove Delegate
+    /// Add Delegates
     ///
     /// - Parameters:
     ///   - delegate: The Callback Object
+    ///   - delegateQueue: The Callback Queue
+    public func add(_ delegates: [T], queue delegateQueue: DispatchQueue = DispatchQueue.main) {
+        
+        for delegate in delegates {
+            add(delegate, queue: delegateQueue)
+        }
+        
+    }
+    
+    /// Remove Delegate
+    ///
+    /// - Parameters:
+    ///   - delegate: The Callback Object Array
     ///   - delegateQueue: The Callback Queue
     public func remove(_ delegate: T, queue delegateQueue: DispatchQueue = DispatchQueue.main) {
         
@@ -124,15 +155,35 @@ public class SwiftMulticastDelegate<T> {
         
     }
     
+    /// Remove Delegates
+    ///
+    /// - Parameters:
+    ///   - delegate: The Callback Object Array
+    ///   - delegateQueue: The Callback Queue
+    public func remove(_ delegates: [T], queue delegateQueue: DispatchQueue = DispatchQueue.main) {
+        
+        for delegate in delegates {
+            remove(delegate, queue: delegateQueue)
+        }
+        
+    }
+    
+    /// Remove All The Delegates
+    public func removeAll() {
+        
+        synchronized(lock: delegateNodes as AnyObject!) {
+            delegateNodes.removeAll()
+        }
+        
+    }
+    
     /// Use this method to determine if the multicast delegate contains a given delegate.
     ///
     /// - Parameter delegate: The given delegate to check if it's contained
     /// - Returns: `true` if the delegate is found or `false` otherwise
     public func contain(_ delegate: T) -> Bool {
         
-        for i in (0..<delegateNodes.count).reversed() {
-            
-            let delegateNode: SwiftMulticastDelegateNode = delegateNodes[i]
+        for delegateNode in delegateNodes {
             
             guard let nodeDelegate = delegateNode.delegate else {
                 continue
@@ -141,16 +192,11 @@ public class SwiftMulticastDelegate<T> {
             if nodeDelegate.isEqual(delegate) {
                 return true
             }
+            
         }
         
         return false
-    }
-    
-    /// Remove All The Delegates
-    public func removeAll() {
-        synchronized(lock: delegateNodes as AnyObject!) {
-            delegateNodes.removeAll()
-        }
+        
     }
     
     /// Invoke Callback
@@ -162,12 +208,14 @@ public class SwiftMulticastDelegate<T> {
             let delegateNode: SwiftMulticastDelegateNode = delegateNodes[i]
             
             if delegateNode.delegate == nil {
+                /* if not exist - remove */
                 delegateNodes.remove(at: i)
             } else {
                 delegateNode.delegateQueue.async {
                     guard let delegate = delegateNode.delegate as? T else {
                         return
                     }
+                    /* callback */
                     invocation(delegate)
                 }
             }
@@ -257,4 +305,3 @@ extension SwiftMulticastDelegate {
     }
     
 }
-
