@@ -134,4 +134,4 @@ Simplify multicast usage
 
 ### License
 
-SwiftMulticastDelegate is available under the MIT license. See the LICENSE file for more info
+`SwiftMulticastDelegate` is available under the MIT license.
