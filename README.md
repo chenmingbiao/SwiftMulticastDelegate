@@ -10,17 +10,17 @@ Implementing multi cast of delegate in Swift.
 
 ### Installation
 
-#### Manual
+#### 1. Manual:
 
 Copy `SwiftMulticastDelegate.swift` to your project
 
-#### CocoaPods
+#### 2. CocoaPods:
 
 ```ruby
 pod 'SwiftMulticastDelegate', :git => 'https://github.com/chenmingbiao/SwiftMulticastDelegate.git'
 ```
 
-#### Swift Package Manager
+#### 3. Swift Package Manager:
 
 You can use [Swift Package Manager](https://swift.org/package-manager/) and specify a dependency in `Package.swift` by adding this:
 ```swift
