@@ -1,12 +1,13 @@
 # SwiftMulticastDelegate
+[English](README.md) | [中文版](README_zh.md)
 
-[![Build Status](https://travis-ci.org/chenmingbiao/SwiftMulticastDelegate.svg?branch=master)](https://travis-ci.org/chenmingbiao/SwiftMulticastDelegate)
-![Swift 4.0.x](https://img.shields.io/badge/Swift-4.0.x-orange.svg) 
-![iOS 8+](http://img.shields.io/badge/iOS-8.0%2B-blue.svg)
+[![Build Status](https://github.com/chenmingbiao/SwiftMulticastDelegate/actions/workflows/swift.yml/badge.svg)](https://github.com/chenmingbiao/SwiftMulticastDelegate/actions)
+![Swift 6.0+](https://img.shields.io/badge/Swift-6.0%2B-orange.svg) 
+![iOS 12+](http://img.shields.io/badge/iOS-12.0%2B-blue.svg)
 ![License](https://img.shields.io/cocoapods/l/SwiftKVO.svg?style=flat)
-![platforms](https://img.shields.io/badge/platforms-iOS%20%7C%20OS%20X%20%7C%20watchOS%20%7C%20tvOS%20-lightgrey.svg)
+![platforms](https://img.shields.io/badge/platforms-iOS%20%7C%20macOS%20%7C%20watchOS%20%7C%20tvOS%20-lightgrey.svg)
 
-Implementing multi cast of delegate in Swift.
+Implementing multi cast of delegate in Swift. Fully compatible with Swift 6 Strict Concurrency.
 
 ### Installation
 
@@ -23,9 +24,9 @@ pod 'SwiftMulticastDelegate', :git => 'https://github.com/chenmingbiao/SwiftMult
 #### 3. Swift Package Manager:
 
 You can use [Swift Package Manager](https://swift.org/package-manager/) and specify a dependency in `Package.swift` by adding this:
-```swift
-.Package(url: "https://github.com/chenmingbiao/SwiftMulticastDelegate.git", majorVersion: 1)
-```
+dependencies: [
+    .package(url: "https://github.com/chenmingbiao/SwiftMulticastDelegate.git", from: "1.0.0")
+]
 
 ### Usage
 
@@ -48,78 +49,43 @@ Alternative version:
 ### Example
 
 ```swift
-// MARK: - MyButtonDelegate
-protocol MyButtonDelegate: class {
-    func didTap()
+// MARK: - Delegate Protocol
+protocol ServiceStateDelegate: AnyObject {
+    func didUpdateState(to state: String)
 }
 
-// MARK: - MyButton
-class MyButton: UIButton {
+// MARK: - Service
+class NetworkService {
+    var delegates = SwiftMulticastDelegate<ServiceStateDelegate>()
 
-    var delegate = SwiftMulticastDelegate<MyButtonDelegate>()
-
-    override init(frame: CGRect) {
-        super.init(frame: frame)
-        self.setTitle("Action", for: .normal)
-        self.setTitleColor(UIColor.blue, for: .normal)
-        self.addTarget(self, action: #selector(didTap), for: .touchUpInside)
-    }
-
-    required init?(coder aDecoder: NSCoder) {
-        fatalError("init(coder:) has not been implemented")
-    }
-
-    @objc func didTap() {
-        delegate => {
-            $0.didTap()
+    func changeState() {
+        // ... some logic ...
+        delegates => {
+            $0.didUpdateState(to: "Connected")
         }
     }
-
-}
-```
-
-```swift
-// MARK: - SubView
-class SubView: UIView {
-    var name = ""
 }
 
-extension SubView: MyButtonDelegate {
-    func didTap() {
-        print("\(name) did tap")
+// MARK: - Observer
+class ViewModel: ServiceStateDelegate {
+    func didUpdateState(to state: String) {
+        print("ViewModel received state: \(state)")
     }
 }
-```
 
-```swift
-// MARK: - ViewController
-class ViewController: UIViewController {
+let service = NetworkService()
+let viewModel1 = ViewModel()
+let viewModel2 = ViewModel()
 
-    override func viewDidLoad() {
-        super.viewDidLoad()
+// Add delegates
+service.delegates += viewModel1
+service.delegates += viewModel2
 
-        let button = MyButton(frame: CGRect(x: 0, y: 0, width: 100, height: 40))
-        button.center = self.view.center
-        self.view.addSubview(button)
+// Trigger invocation
+service.changeState()
 
-        let subview1 = SubView()
-        subview1.name = "subview@1"
-        button.delegate += subview1
-        self.view.addSubview(subview1)
-
-        let subview2 = SubView()
-        subview2.name = "subview@2"
-        button.delegate += subview2
-        self.view.addSubview(subview2)
-
-        /* Add Array */
-        // button.delegate += [subview1, subview2]
-
-        /* Rmove Array */
-        // button.delegate -= [subview1, subview2]
-    }
-
-}
+// Remove delegates
+service.delegates -= viewModel1
 ```
 
 ### Operators

@@ -43,3 +43,8 @@ Carthage/Build
 
 .DS_Store
 
+# Swift Package Manager
+.build/
+.swiftpm/
+Packages/
+Package.resolved
